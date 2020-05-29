@@ -11,7 +11,7 @@ False = task is not complete
 True	1. Set up a very basic starting react page (from react website pre-setup). This is a 
 	single page react starting position.
 
-False	2. Set up GitHub repository with this so that I can save progress. (Incomplete)
+True	2. Set up GitHub repository with this so that I can save progress.
 	
 False	3. Set up redux (front end logistics) 
 	
@@ -66,23 +66,32 @@ STEP BY STEP INSTRUCTIONS ON HOW I COMPLETED EACH SECTION OF PROJECT BUILD
 3. Remove any git associated material
 	a. Navigate to project directory with terminal
 	b. rd .git /S/Q (remove associated git material)
-	c. git init (initialize)
-	d. git add . (add everything)
-	e. git commit -m "First commit, setup of github for project"
-	This creates a local git repository
-	f. git remote add origin <url provided by github when "new repository
+4. Initialize, commit, and push
+	a. git init (initialize)
+	b. git add . (add everything)
+	c. git commit -m "First commit, setup of github for project"
+	(This creates a local git repository)
+
+	d. git remote add origin <url provided by github when "new repository
 	at github" was initiated>
+
 		NOTE: I am setting up with HTTPS but in the future may want to do
 		SSH
 		SEE: "Switching remote URLs from HTTPS to SSH." if I want to make 
 		high value repository more secure
-	g. git push -u origin master
-	e. To do additions in the future
+
+	e. git push -u origin master
+
+	f. To do additions in the future
 		1. Git add . (Adds all to staging for commit)
 		2. git status (shows new additions)
-		3. git commit (commits all staging file changes)
+		3. git commit -m "message for changes" 
+		(commits all staging file changes)
+		make sure to leave a message or it will open weird 
+		text editor
 		4. git push (adds to external repository)
 
+(3.) -- Set up Redux environment for state managment of complex apps -- (3.)
 
 
 
