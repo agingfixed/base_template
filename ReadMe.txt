@@ -77,6 +77,11 @@ STEP BY STEP INSTRUCTIONS ON HOW I COMPLETED EACH SECTION OF PROJECT BUILD
 		SEE: "Switching remote URLs from HTTPS to SSH." if I want to make 
 		high value repository more secure
 	g. git push -u origin master
+	e. To do additions in the future
+		1. Git add . (Adds all to staging for commit)
+		2. git status (shows new additions)
+		3. git commit (commits all staging file changes)
+		4. git push (adds to external repository)
 
 
 
