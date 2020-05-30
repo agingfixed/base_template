@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './App';
+
+import Logo_Link_Window from './components/Logo_Link_Window';
+import Server_Window from './components/Server_Window';
+import File_Window from './components/File_Window';
+import Login_Window from './components/Login_Window';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+
+    <Server_Window />
+    <File_Window />
+    <Logo_Link_Window />
+    <Login_Window />
+
   </React.StrictMode>,
   document.getElementById('root')
 );

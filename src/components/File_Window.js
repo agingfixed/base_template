@@ -1,14 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import './Windows.css';
 
-function App() {
+function File_Window() {
   return (
-    <div className="App">
+    <div className="File_Window">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="Logo_Demo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          File Demonstrations
         </p>
         <a
           className="App-link"
@@ -16,11 +16,11 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Link to learn React
         </a>
       </header>
     </div>
   );
 }
 
-export default App;
+export default File_Window;
