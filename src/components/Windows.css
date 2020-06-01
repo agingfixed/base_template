@@ -1,12 +1,19 @@
-
-
+.Entire_App {
+  position:absolute;
+  background-color: #252e41;
+  height: 100%;
+  width: 100%;
+}
 
 .Server_Window {
   position:absolute;
   text-align: center;
   border: 1px solid blue;
-  width: 50%;
-  height: 200px;
+  width: 48%;
+  min-width: 450px;
+  left: 1%;
+  top: 5px;
+  height: 400px;
   background-color: #252e41;
   /*min-height: 100vh;*/
   display: flex;
@@ -20,10 +27,12 @@
 .File_Window {
   position:absolute;
   left:50%;
+  top:5px;
   text-align: center;
   border: 1px solid red;
-  width: 50%;
-  height: 200px;
+  width: 49%;
+  min-width: 450px;
+  height: 400px;
   background-color: #252e41;
   /*min-height: 100vh;*/
   display: flex;
@@ -34,12 +43,23 @@
   color: white;
 }
 
+@media (max-width: 950px) {
+  .File_Window {
+    left: 470px;
+  }
+  .Login_Window {
+    left: 470px;
+  }
+}
+
 .Logo_Link_Window {
   position:absolute;
-  top:200px;
+  top:415px;
+  width: 48%;
+  min-width: 450px;
+  left: 1%;
   text-align: center;
   border: 1px solid rgb(0, 255, 34);
-  width: 50%;
   height: 200px;
   /*padding: 50px;*/
   background-color: #252e41;
@@ -54,11 +74,12 @@
 
 .Login_Window {
   position:absolute;
-  top:200px;
+  top:415px;
   left:50%;
   text-align: center;
   border: 1px solid rgb(255, 0, 234);
-  width: 50%;
+  width: 49%;
+  min-width: 450px;
   height: 200px;
   background-color: #252e41;
   /*min-height: 100vh;*/
@@ -70,6 +91,12 @@
   color: white;
 }
 
+@media (max-width: 950px) {
+  .Login_Window {
+    left: 470px;
+  }
+}
+
 .Logo_Demo {
   height: 10vmin;
   pointer-events: none;
@@ -79,10 +106,6 @@
   .Logo_Demo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.Logo_Link_Window {
-  
 }
 
 .App-link {

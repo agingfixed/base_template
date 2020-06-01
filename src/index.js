@@ -1,23 +1,16 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import Logo_Link_Window from './components/Logo_Link_Window';
-import Server_Window from './components/Server_Window';
-import File_Window from './components/File_Window';
-import Login_Window from './components/Login_Window';
+import Entire_App from './components/Entire_App';
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-
-    <Server_Window />
-    <File_Window />
-    <Logo_Link_Window />
-    <Login_Window />
-
+    <Entire_App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

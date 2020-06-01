@@ -130,8 +130,10 @@ render(){return(html div)} The html part is where css defines properties
 	respect to parent element
 	c. Relative is applies changes to where the element would have been in normal workflow
 	if it was at a static position
-	
 	It seems to me that most positioning will be based on absolute
+
+5. Did a bunch of sizing stuff in css. @media used for sizing (if window is less than amount stuff in effect
+	type of stuff. @ media = Sets the style rules for different media types/devices/sizes (built into css)
 
 
 
