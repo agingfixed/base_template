@@ -14,12 +14,14 @@ True	1. Set up a very basic starting react page (from react website pre-setup). 
 
 True	2. Set up GitHub repository with this so that I can save progress.
 
-False	3. Set up a very basic layout for the visual component of all the abilities that are 
+True	3. Set up a very basic layout for the visual component of all the abilities that are 
 	going to be demonstrated. 
 	
 	This is visual only (nothing will happen when buttons are clicked etc...Just visual display)
 		
-		Window component 1 (Server interactions)
+   True		Window component 1 (Login page)
+		
+   True 	Window component 2 (Server interactions)
 
 		a. Send info to server
 		b. Receive info from server and display in browser visuals (local host
@@ -27,32 +29,32 @@ False	3. Set up a very basic layout for the visual component of all the abilitie
 		This is display of state before and after interaction with server
 		c. Receive info from server and display in console
 		
-		Window component 2 (File interactions (through server))
+   True 	Window component 3 (File interactions (through server))
 
 		d. Place info into file (saving information) on server
 		e. Reading info from file and displaying it to browser visuals
 		f. Reading info from file and displaying it to console
 
-		Window component 3 (Login and profile demonstrations)
+   True 	Window component 4 (animation (section only))
 
-		g. Set up a password login section that would lead to 
-		next page once login
-
-		Window component 4 (slide animation)
-
-		h. Set up a animation using state with a slider (as
-		was performed in my Algo-Bots app)
+		g. Set up area to demonstrate animations like slider in Algo-Bots
 
 False	4. Set up redux (front end logistics) 
 	Start, dispatch (send or convey), reducer (does functions), and state
 
-False	5. Set up Node.js server (a,b, and c)
+  False 	a. Setup slide animation in animation window (and any other
+		animations
 
-False.	6. Set up file system (d,e, and f)
+False	5. Set up Node.js server system (a,b, and c)
 		
-False	7. Set up multipage capabilities with password login (g) Display personal content (secrete unless login)
+   False	a. This is when I set up login dependencies like Set up multipage 
+		capabilities with password login 
+   False	b. Display personal content (secrete unless login)
 
+False.	6. Set up file system (d,e, and f) hooked up
 
+False.	6. Set up animations (g) hooked up
+		
 
 STEP BY STEP INSTRUCTIONS ON HOW I COMPLETED EACH SECTION OF PROJECT BUILD
 
@@ -60,7 +62,8 @@ STEP BY STEP INSTRUCTIONS ON HOW I COMPLETED EACH SECTION OF PROJECT BUILD
 
 (1.) --getting a pre-setup version of react running-- (1.)
 
-1. Download and set up Visual Studio Code (or any IDE “integrated development environment” that works for coding and reading javascript, css, html ,and node.js files.)
+1. Download and set up Visual Studio Code (or any IDE “integrated development environment” that works for 
+coding and reading javascript, css, html ,and node.js files.)
 2. Open terminal and navigate to directory that you want to put  this project directory in. 
 3. mkdir <directory_name>
 4. Install node.js to your system using the internet 
@@ -134,8 +137,32 @@ render(){return(html div)} The html part is where css defines properties
 
 5. Did a bunch of sizing stuff in css. @media used for sizing (if window is less than amount stuff in effect
 	type of stuff. @ media = Sets the style rules for different media types/devices/sizes (built into css)
+6. .Classname is used for item selection but stuff like body or header or div (without . ) is used for
+Specifications in a broader context
 
+-- Login Page --
 
+7.   Instructions: https://scotch.io/tutorials/validating-a-login-form-with-react
+     Started work on login page using Formik package from npm which will handle:
+	
+	a. Getting values in and out of form state
+	b. Validation and error messages
+	c. Handling form submissions
+
+	In Terminal : npm install formik --save. https://jaredpalmer.com/formik/docs/overview
+	
+	email-validator from npm                 https://www.npmjs.com/package/email-validator
+	In Terminal : npm install email-validator
+
+	use package called yup from npm.         https://www.npmjs.com/package/yup
+	In Terminal : npm install -S yup
+	
+	I did the walkthrough setup and now onSubmit is ready to be handled by a background process 
+	that needs login criteria
+
+8. Focus on visuals. To actually get secure login the server needs to be set up. 
+
+(4.) -- State with Redux and React, Front end logistics -- (4.)
 
 
 

@@ -8,7 +8,7 @@ function Logo_Link_Window() {
       <header className="Logo_Link_Header">
         <img src={logo} className="Logo_Demo" alt="logo" />
         <p>
-          Logo and Link
+          Front End Graphics
         </p>
         <a
           className="App-link"
@@ -16,7 +16,7 @@ function Logo_Link_Window() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Link to learn React
+          Link to React Framework
         </a>
       </header>
     </div>

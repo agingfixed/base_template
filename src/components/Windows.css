@@ -1,3 +1,9 @@
+
+
+body {
+  background-color: #252e41;
+}
+
 .Entire_App {
   position:absolute;
   background-color: #252e41;
@@ -13,15 +19,20 @@
   min-width: 450px;
   left: 1%;
   top: 5px;
-  height: 400px;
+  height: 350px;
   background-color: #252e41;
   /*min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /*justify-content: center;*/
+  font-size: 10px + 2vmin;
+  /*font-size: calc(10px + 2vmin);*/
   color: white;
+}
+.Server_Window body {
+  position:absolute;
+  top:35%;
 }
 
 .File_Window {
@@ -32,15 +43,19 @@
   border: 1px solid red;
   width: 49%;
   min-width: 450px;
-  height: 400px;
+  height: 350px;
   background-color: #252e41;
   /*min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /*justify-content: center;*/
+  font-size: 10px + 2vmin;
   color: white;
+}
+.File_Window body {
+  position:absolute;
+  top:35%;
 }
 
 @media (max-width: 950px) {
@@ -54,7 +69,7 @@
 
 .Logo_Link_Window {
   position:absolute;
-  top:415px;
+  top:365px;
   width: 48%;
   min-width: 450px;
   left: 1%;
@@ -74,7 +89,7 @@
 
 .Login_Window {
   position:absolute;
-  top:415px;
+  top:365px;
   left:50%;
   text-align: center;
   border: 1px solid rgb(255, 0, 234);
@@ -86,9 +101,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /*justify-content: center;*/
+  font-size: 10px + 2vmin;
   color: white;
+}
+.Login_Window body {
+  position:absolute;
+  top:38%;
+}
+.Login-Submit{
+  position:absolute;
+  top:130%;
+}
+header{
+  font-size: 25px;
 }
 
 @media (max-width: 950px) {
