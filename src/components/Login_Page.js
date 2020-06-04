@@ -1,10 +1,28 @@
-import React from "react";
+import React, {Component} from 'react';
 import { Formik } from "formik";
-import * as EmailValidator from "email-validator";
+//import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
 import './Login_Page.css';
 
-const ValidatedLoginForm = () => (
+import {genericAction} from '../actions/generic_actions.js'
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
+class ValidatedLoginForm extends Component{
+  constructor(){
+      super()
+      this.state={
+
+      }
+  }
+  genericFunction = this.genericFunction.bind(this)
+
+  genericFunction(event){
+    event.preventDefault()
+    this.props.genericAction({genericButtonClick:"Clicked Button"})
+  }
+  render(){
+  return (
     <Formik
         initialValues = {{email: "",password: ""}}
         onSubmit = {(values,{setSubmitting}) => {
@@ -86,6 +104,22 @@ const ValidatedLoginForm = () => (
              );
         }}
     </Formik>
-    );
+    );}
+      }
 
-export default ValidatedLoginForm;
+
+//as stated
+function mapStateToProps(state){
+  return{
+    template_reducer: state.template_reducer
+  }
+}
+
+//action connect through props
+function matchDispatchToProps(dispatch){
+  return bindActionCreators(
+      {genericAction:genericAction} , dispatch)
+}
+
+//state connect and action connect
+export default connect(mapStateToProps, matchDispatchToProps)(ValidatedLoginForm);

@@ -19,9 +19,9 @@ True	3. Set up a very basic layout for the visual component of all the abilities
 	
 	This is visual only (nothing will happen when buttons are clicked etc...Just visual display)
 		
-   True		Window component 1 (Login page)
+  True		Window component 1 (Login page)
 		
-   True 	Window component 2 (Server interactions)
+  True 		Window component 2 (Server interactions)
 
 		a. Send info to server
 		b. Receive info from server and display in browser visuals (local host
@@ -29,31 +29,37 @@ True	3. Set up a very basic layout for the visual component of all the abilities
 		This is display of state before and after interaction with server
 		c. Receive info from server and display in console
 		
-   True 	Window component 3 (File interactions (through server))
+  True 		Window component 3 (File interactions (through server))
 
 		d. Place info into file (saving information) on server
 		e. Reading info from file and displaying it to browser visuals
 		f. Reading info from file and displaying it to console
 
-   True 	Window component 4 (animation (section only))
+  True 		Window component 4 (animation (section only))
 
 		g. Set up area to demonstrate animations like slider in Algo-Bots
 
-False	4. Set up redux (front end logistics) 
+False	4. Set up redux (front end logistics)
 	Start, dispatch (send or convey), reducer (does functions), and state
+  
+  True		a. Very basic setup (working redux)
 
-  False 	a. Setup slide animation in animation window (and any other
-		animations
+  False		b. Managed state prior to submissions (state is finished to reflect
+		input data prior to submission
+
+  False 	c. Setup slide animation in animation window (and any other
+		animations (mostly finished front end)
 
 False	5. Set up Node.js server system (a,b, and c)
 		
-   False	a. This is when I set up login dependencies like Set up multipage 
+  False		a. This is when I set up login dependencies like Set up multipage 
 		capabilities with password login 
-   False	b. Display personal content (secrete unless login)
+  False		b. Display personal content (secrete unless login)
+
+  False 	c. Asynchronous demonstrations with simple API call that sends to front end
 
 False.	6. Set up file system (d,e, and f) hooked up
 
-False.	6. Set up animations (g) hooked up
 		
 
 STEP BY STEP INSTRUCTIONS ON HOW I COMPLETED EACH SECTION OF PROJECT BUILD
@@ -164,6 +170,32 @@ Specifications in a broader context
 
 (4.) -- State with Redux and React, Front end logistics -- (4.)
 
+1.	https://redux.js.org/introduction/installation
+	In terminal: 
+	npm install redux, 
+	npm install react-redux, 
+	npm install --save-dev redux-devtools
+
+2. 	https://www.npmjs.com/package/redux-logger (tool for developers to manage state
+	transitions)
+	In terminal: 
+	npm i --save redux-logger
+	https://www.npmjs.com/package/redux-thunk (action creators can return functions
+	instead of actions and also async dispatch)
+	In Terminal:
+	npm install --save redux-thunk
+
+3. Taking much of the redux stuff from Algo-Bots
+	a. Reducers ->reducers combine:these handle computations to state
+	b. Specific actions receive a payload and attach a specific signal to be picked up 
+	by reducer. The action specifies the type and the reducer uses type to figure out
+	what to do with it
+	c. These imports added to top of hierarchy
+	import allReducers from './reducers/reducers_combine.js'
+	import {Provider} from 'react-redux';
+	import {applyMiddleware,createStore} from 'redux';
+	import logger from "redux-logger";
+	import thunk from "redux-thunk";
 
 
 
