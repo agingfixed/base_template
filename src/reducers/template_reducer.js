@@ -1,12 +1,8 @@
 const templateData = {
-    Item_1:{
-        Item_1_a:"Stuff_of_Item_1_a",
-        Item_1_b:"Stuff_of_Item_1_b"
-    },
-    Item_2:{
-        Item_2_a:"Stuff_of_Item_2_a",
-        Item_2_b:"Stuff_of_Item_2_b"
-    }
+    textAreaServer:"Type in Data that will run through server functions...",
+    textAreaFile:"Type in Data that will saved to server files...",
+    sliderOne:"5",
+    sliderTwo:"5"
 }
 export function templateReducer(state = templateData, action){
 
@@ -18,6 +14,12 @@ export function templateReducer(state = templateData, action){
             console.log(`Hello from templateReducer. You
             triggered a GENERIC_ACTION this is the 
             state of the front end of the app: ${state}`)
+            return state;
+        case "TEXT_KEYSTROKE":
+            state = Object.assign({},state, action.payload);
+            return state;
+        case "SLIDER_SLIDE":
+            state = Object.assign({},state, action.payload);
             return state;
         default:
             return state;

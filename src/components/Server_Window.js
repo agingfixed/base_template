@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Windows.css';
 
 import {genericAction} from '../actions/generic_actions.js'
+import {textBoxTyping} from '../actions/typing.js'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -10,14 +11,33 @@ class Server_Window extends Component{
   constructor(){
       super()
       this.state={
-
+        serverClicks:0,
+        fileClicks:0
       }
   }
   genericFunction = this.genericFunction.bind(this)
+  updateTextBox = this.updateTextBox.bind(this)
+  serverTextBoxClick = this.serverTextBoxClick.bind(this)
 
   genericFunction(event){
     event.preventDefault()
     this.props.genericAction({genericButtonClick:"Clicked Button"})
+  }
+  updateTextBox(event){
+    event.preventDefault()
+    this.props.textBoxTyping({textAreaServer:event.target.value})
+    console.log(event.target.value)
+  }
+  serverTextBoxClick(event){
+    event.preventDefault()
+    console.log(event.target.value)
+    if(this.state.serverClicks ===0 ){
+      console.log(event.target)
+      this.props.textBoxTyping({textAreaServer:""})
+      this.setState((state) => {
+        return {serverClicks: state.serverClicks + 1};
+      });
+    }
   }
   render(){
   return (
@@ -35,7 +55,9 @@ class Server_Window extends Component{
           name="w3review" 
           rows="4" 
           cols="50"
-          defaultValue="Type in Data that will run through server functions..."
+          value={this.props.template_reducer.textAreaServer}
+          onClick={this.serverTextBoxClick}
+          onChange={this.updateTextBox}
           >
           </textarea><br></br>
           <input 
@@ -67,7 +89,8 @@ function mapStateToProps(state){
 //action connect through props
 function matchDispatchToProps(dispatch){
   return bindActionCreators(
-      {genericAction:genericAction} , dispatch)
+      {genericAction:genericAction,
+        textBoxTyping:textBoxTyping} , dispatch)
 }
 
 //state connect and action connect

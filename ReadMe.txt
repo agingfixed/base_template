@@ -44,7 +44,7 @@ False	4. Set up redux (front end logistics)
   
   True		a. Very basic setup (working redux)
 
-  False		b. Managed state prior to submissions (state is finished to reflect
+  True		b. Managed state prior to submissions (state is finished to reflect
 		input data prior to submission
 
   False 	c. Setup slide animation in animation window (and any other
@@ -196,6 +196,15 @@ Specifications in a broader context
 	import {applyMiddleware,createStore} from 'redux';
 	import logger from "redux-logger";
 	import thunk from "redux-thunk";
+
+4. Connected the framework based on previous work
+
+5. Connected text boxes to redux state
+
+6. Now to focus on slider animations
+	a. Hooked up sliders to redux state
+	b. 
+
 
 
 

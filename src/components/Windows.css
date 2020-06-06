@@ -133,9 +133,14 @@ header{
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.FEG {
+  position:relative;
+  top:-10px;
+}
 .App-link {
   color: #61dafb;
+  position:relative;
+  top:-20px;
 }
 
 @keyframes App-logo-spin {
@@ -146,3 +151,77 @@ header{
     transform: rotate(360deg);
   }
 }
+.sliderOne {
+  -webkit-appearance: none;
+  width: 150px;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  transform: rotateZ(90deg);
+  position:absolute;
+  left:75%;
+}
+
+.sliderOne:hover {
+  opacity: 1;
+}
+
+.sliderOne::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: red;
+  cursor: pointer;
+}
+
+.sliderOne::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: red;
+  cursor: pointer;
+}
+
+.sliderTwo {
+  -webkit-appearance: none;
+  width: 150px;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  transform: rotateZ(90deg);
+  position:absolute;
+  right:75%;
+}
+
+.sliderTwo:hover {
+  opacity: 1;
+}
+
+.sliderTwo::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: blue;
+  cursor: pointer;
+}
+
+.sliderTwo::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: blue;
+  cursor: pointer;
+}
+  
