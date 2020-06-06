@@ -5,6 +5,7 @@ import {genericAction} from '../actions/generic_actions.js'
 import {textBoxTyping} from '../actions/typing.js'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {sliderAction} from '../actions/slider_action.js'
 
 class File_Window extends Component{
   constructor(){
@@ -17,6 +18,7 @@ class File_Window extends Component{
   genericFunction = this.genericFunction.bind(this)
   updateTextBox = this.updateTextBox.bind(this)
   fileTextBoxClick = this.fileTextBoxClick.bind(this)
+  fileShutterDrawer = this.fileShutterDrawer.bind(this)
 
   genericFunction(event){
     event.preventDefault()
@@ -35,6 +37,9 @@ class File_Window extends Component{
       });
     }
   }
+  fileShutterDrawer(){
+    return(<div className="File_Shutter" style={{height:(parseInt(this.props.template_reducer.sliderOne, 10)*3.33).toString(10)+"px"}}></div>)
+  }
   render(){
   return (
     <div className="File_Window">
@@ -42,6 +47,7 @@ class File_Window extends Component{
         <p>File Demonstrations</p>
       </header>
       <div className="Div_Body">
+        {this.fileShutterDrawer()}
         <form action="/action_page.php">
           <label>Save Text to Server Files:</label><br></br>
           <textarea 
@@ -82,7 +88,8 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators(
       {genericAction:genericAction,
-        textBoxTyping:textBoxTyping} , dispatch)
+        textBoxTyping:textBoxTyping,
+        sliderAction:sliderAction} , dispatch)
 }
 
 //state connect and action connect

@@ -1,8 +1,8 @@
 const templateData = {
     textAreaServer:"Type in Data that will run through server functions...",
     textAreaFile:"Type in Data that will saved to server files...",
-    sliderOne:"5",
-    sliderTwo:"5"
+    sliderOne:"0",
+    sliderTwo:"0"
 }
 export function templateReducer(state = templateData, action){
 

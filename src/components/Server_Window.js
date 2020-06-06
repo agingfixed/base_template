@@ -18,6 +18,7 @@ class Server_Window extends Component{
   genericFunction = this.genericFunction.bind(this)
   updateTextBox = this.updateTextBox.bind(this)
   serverTextBoxClick = this.serverTextBoxClick.bind(this)
+  fileShutterDrawer = this.fileShutterDrawer.bind(this)
 
   genericFunction(event){
     event.preventDefault()
@@ -39,6 +40,9 @@ class Server_Window extends Component{
       });
     }
   }
+  fileShutterDrawer(){
+    return(<div className="Server_Shutter" style={{height:(parseInt(this.props.template_reducer.sliderTwo, 10)*3.33).toString(10)+"px"}}></div>)
+  }
   render(){
   return (
     <div className="Server_Window">
@@ -48,6 +52,7 @@ class Server_Window extends Component{
         </p>
       </header>
       <div className = "Div_Body">
+      {this.fileShutterDrawer()}
         <form action="/action_page.php">
           <label >Send text to Server Functions:</label><br></br>
           <textarea 
