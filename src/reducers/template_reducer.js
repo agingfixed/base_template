@@ -2,7 +2,8 @@ const templateData = {
     textAreaServer:"Type in Data that will run through server functions...",
     textAreaFile:"Type in Data that will saved to server files...",
     sliderOne:"0",
-    sliderTwo:"0"
+    sliderTwo:"0",
+    APIButtonStatus:""
 }
 export function templateReducer(state = templateData, action){
 
@@ -11,9 +12,6 @@ export function templateReducer(state = templateData, action){
             state = Object.assign({},state, action.payload);
             //reducer computation (This does stuff to payload
             //recieved. This is frontend computation)
-            console.log(`Hello from templateReducer. You
-            triggered a GENERIC_ACTION this is the 
-            state of the front end of the app: ${state}`)
             return state;
         case "TEXT_KEYSTROKE":
             state = Object.assign({},state, action.payload);

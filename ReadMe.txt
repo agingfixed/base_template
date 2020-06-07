@@ -39,7 +39,7 @@ True	3. Set up a very basic layout for the visual component of all the abilities
 
 		g. Set up area to demonstrate animations like slider in Algo-Bots
 
-False	4. Set up redux (front end logistics)
+True	4. Set up redux (front end logistics)
 	Start, dispatch (send or convey), reducer (does functions), and state
   
   True		a. Very basic setup (working redux)
@@ -47,18 +47,19 @@ False	4. Set up redux (front end logistics)
   True		b. Managed state prior to submissions (state is finished to reflect
 		input data prior to submission
 
-  False 	c. Setup slide animation in animation window (and any other
+  True	 	c. Setup slide animation in animation window (and any other
 		animations (mostly finished front end)
 
-False	5. Set up Node.js server system (a,b, and c)
-		
-  False		a. This is when I set up login dependencies like Set up multipage 
-		capabilities with password login 
-  False		b. Display personal content (secrete unless login)
+False	5. Set up Node.js server system (a, b and c)
 
-  False 	c. Asynchronous demonstrations with simple API call that sends to front end
+  False		a. Display personal content (secrete unless login)
 
-False.	6. Set up file system (d,e, and f) hooked up
+  False 	b. Asynchronous demonstrations with simple API call that sends to front end
+
+False	6. Set up file system (d,e, and f) hooked up
+
+False	7. Set up login dependencies like multipage capabilities and password login and
+	specific user content based on created user
 
 		
 
@@ -203,7 +204,68 @@ Specifications in a broader context
 
 6. Now to focus on slider animations
 	a. Hooked up sliders to redux state
-	b. 
+	b. Slider Shutters completed 
+
+(5.) -- Set up Node.js server system -- (5.)
+
+1. Express is a web application framework for Node.js that allows you to spin up robust APIs 
+and web servers in a much easier and cleaner way. It is a lightweight package that does not 
+obscure the core Node.js features.
+
+2. Method "Post" used mostly but "Get" is another method app.post... or app.get...
+	a. You can control validity of information in html using pattern value (validity and valid)
+	It is a built in function of html to do a reg ex inside of submission value if desired
+	b. NOTES: No server stuff is on the front end code other than the post request (no imports
+	no requirements etc) This suggests that it is a normal activity to do posts to the internet
+	from browser front end software and react. Also When I installed the server last time with
+	Algo-Bots I have to change startup from npm start to npm run dev which starts the server and
+	starts react. So the server is listening for the react application just like it would on the
+	internet. 
+3. Put index.js into server folder
+
+4. In Terminal: npm install express --save 
+
+5. To handle HTTP POST request in Express.js version 4 and above, you need to install
+middleware module called body-parser. Body-parser extract the entire body portion of an
+incoming request stream and exposes it on req.body.
+
+6. In Terminal: npm install body-parser --save
+
+7. Logger helps recreate events that lead to an error and allow you to figure out what causes issues
+	a. npm i express-pino-logger --save
+
+8. Fs seems to be part of node already
+
+9. I wanted to see if package.json would allow me to do this quickly:
+	a. Copy and paste this into devDependencies and did an npm install
+		"body-parser": "^1.19.0",
+    		"express": "^4.17.1",
+    		"express-pino-logger": "^4.0.0",
+    		"node-env-run": "^3.0.2",
+    		"nodemon": "^1.19.4",
+    		"npm-run-all": "^4.1.5",
+    		"pino-colada": "^1.5.1"
+
+	b. Added "proxy": "http://localhost:3001",
+	
+	c. Copy and past this into scripts and another npm install
+		"server": "node-env-run server --exec nodemon | pino-colada",
+   		"dev": "run-p server start"
+
+	d. Did not work (Reason figured out...I did not have .env file!)
+	
+	e. now: npm install express concurrently
+
+	f. npm i nodemon --save-dev
+
+	g. got server to run by cd to server and in terminal: node index.js
+	This is the server file and node starts it (now can navigate to 
+	local host specified and see data)
+
+	h. Things get tough so I search web. https://www.twilio.com/blog/react-app-with-node-js-server-proxy
+		1. npm install express body-parser --save-dev
+		2. npm install node-env-run nodemon npm-run-all express-pino-logger pino-colada --save-dev
+	i. Placed env file in right location --> worked!
 
 
 

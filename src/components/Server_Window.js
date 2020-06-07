@@ -19,6 +19,7 @@ class Server_Window extends Component{
   updateTextBox = this.updateTextBox.bind(this)
   serverTextBoxClick = this.serverTextBoxClick.bind(this)
   fileShutterDrawer = this.fileShutterDrawer.bind(this)
+  genericAPICall = this.genericAPICall.bind(this)
 
   genericFunction(event){
     event.preventDefault()
@@ -42,6 +43,23 @@ class Server_Window extends Component{
   }
   fileShutterDrawer(){
     return(<div className="Server_Shutter" style={{height:(parseInt(this.props.template_reducer.sliderTwo, 10)*3.33).toString(10)+"px"}}></div>)
+  }
+  genericAPICall(event){
+  event.preventDefault()
+  const {value} = event.target;
+  this.props.genericAction({APIButtonStatus:value})
+   let data = {tokenSelected:this.props.template_reducer.APIButtonStatus}
+    data = JSON.stringify(data)
+    fetch(`api/coinbasePrice/`,
+        {
+            method: 'POST',
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        body:data})
+        .then(response=> response.json())
+        .then(response=> console.log(response))
   }
   render(){
   return (
@@ -70,14 +88,19 @@ class Server_Window extends Component{
           value="Send text to server process"
           onClick={this.genericFunction}
           ></input><br></br>
-            Processed server data will display here
+          Processed server data will display here
           <br></br>
-          <input 
+          <select 
           type="submit" 
-          value="Asynchronous API call"
-          onClick={this.genericFunction}
-          ></input><br></br>
-         Asynchronous API info will display here
+          value={this.props.template_reducer.APIButtonStatus}
+          onChange={this.genericAPICall}
+          >
+          <option value="">-- Select Your Activity --</option>
+          <option value="load BTC"> Load Coinbase Bitcoin Price </option>
+          <option value="load ETH"> Load Coinbase Ethereum Price </option>
+          <option value="load EOS"> Load Coinbase EOS Price </option>
+          </select><br></br>
+          Asynchronous API info will display here
         </form>
         </div>
     </div>
