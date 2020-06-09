@@ -50,21 +50,40 @@ True	4. Set up redux (front end logistics)
   True	 	c. Setup slide animation in animation window (and any other
 		animations (mostly finished front end)
 
-False	5. Set up Node.js server system (a, b and c)
+True	5. Set up Node.js server system
 
-  False		a. Display personal content (secrete unless login)
+  True		a. Basic setup demonstrated
 
-  False 	b. Asynchronous demonstrations with simple API call that sends to front end
+  True		b. Set up text box on server window to send and receive processes
+		text from server process
 
-False	6. Set up file system (d,e, and f) hooked up
+  True  	c. Asynchronous demonstrations with simple API call that sends
+		to front end visuals
 
-False	7. Set up login dependencies like multipage capabilities and password login and
-	specific user content based on created user
+False	6. Set up file system 
+
+  False		a. Save to file from text box
+
+  False		b. Receive from file and display text box saved data
+
+False	7. Set up login dependencies
+
+  False		a. User accounts file system
+			1. New user account process
+			2. Existing user account process
+			3. Modify user account process (if easy,
+			otherwise just make a skeleton of it for 
+			place holding)
+		
+  False		b. Password login
+
+  False		c. multipage capabilities connected to existing account login
+
+  False		d. Specific user data (secrete unless login)
 
 		
 
 STEP BY STEP INSTRUCTIONS ON HOW I COMPLETED EACH SECTION OF PROJECT BUILD
-
 
 
 (1.) --getting a pre-setup version of react running-- (1.)
@@ -267,7 +286,23 @@ incoming request stream and exposes it on req.body.
 		2. npm install node-env-run nodemon npm-run-all express-pino-logger pino-colada --save-dev
 	i. Placed env file in right location --> worked!
 
+(Basic setup NodeJS completed)
 
+10. API setup
+
+	a. Coinbase docs explainer https://github.com/coinbase/coinbase-pro-node
+
+	b. npm install coinbase-pro
+
+	c. Only setting put public client for now 
+	const CoinbasePro = require('coinbase-pro');
+	const publicClient = new CoinbasePro.PublicClient();
+	goes in docs
+
+	d. Worked out async issues so this worked properly (state influenced by incoming data)
+
+
+(6.) -- Set up file system (6.)
 
 
 

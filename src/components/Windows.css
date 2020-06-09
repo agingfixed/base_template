@@ -24,7 +24,8 @@
 .Server_Window {
   position:absolute;
   text-align: center;
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
+  outline:1px solid blue;
   border-radius: 5px;
   width: 48%;
   min-width: 450px;
@@ -44,6 +45,36 @@
 .Server_Window body {
   position:absolute;
   top:35%;
+}
+.serverTextArea{
+  position:relative;
+  text-align: center;
+  /*border: 1px solid blue;*/
+  width: 340px;
+  height: 70px;
+  left:13%;
+  top:-6px;
+  overflow:scroll;
+}
+.serverTextAreaField{
+  position:relative;
+  max-height: 50px;
+  min-height: 50px;
+  min-width:310px;
+  max-width:310px;
+  left:5px;
+}
+.serverSubmitButtonArea{
+  position:relative;
+  /*border: 1px solid blue;*/
+  width:448px;
+  height:90px;
+  top:-30px;
+  overflow:scroll;
+}
+.APIReturnedText{
+  position:relative;
+  top:5px;
 }
 .File_Shutter {
   position:absolute;

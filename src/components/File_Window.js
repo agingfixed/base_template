@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import './Windows.css';
 
 import {genericAction} from '../actions/generic_actions.js'
-import {textBoxTyping} from '../actions/typing.js'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {sliderAction} from '../actions/slider_action.js'
 
 class File_Window extends Component{
   constructor(){
@@ -16,22 +14,18 @@ class File_Window extends Component{
       }
   }
   genericFunction = this.genericFunction.bind(this)
-  updateTextBox = this.updateTextBox.bind(this)
   fileTextBoxClick = this.fileTextBoxClick.bind(this)
   fileShutterDrawer = this.fileShutterDrawer.bind(this)
 
   genericFunction(event){
+    const {value,name} = event.target;
     event.preventDefault()
-    this.props.genericAction({genericButtonClick:"Clicked Button"})
-  }
-  updateTextBox(event){
-    event.preventDefault()
-    this.props.textBoxTyping({textAreaFile:event.target.value})
+    this.props.genericAction({[name]:value})
   }
   fileTextBoxClick(event){
     event.preventDefault()
     if(this.state.fileClicks === 0 ){
-      this.props.textBoxTyping({textAreaFile:""})
+      this.props.genericAction({textAreaFile:""})
       this.setState((state) => {
         return {fileClicks: state.fileClicks + 1};
       });
@@ -52,12 +46,12 @@ class File_Window extends Component{
           <label>Save Text to Server Files:</label><br></br>
           <textarea 
           id="w3review" 
-          name="w3review" 
+          name="textAreaFile" 
           rows="4" 
           cols="50"
           value={this.props.template_reducer.textAreaFile}
           onClick={this.fileTextBoxClick}
-          onChange={this.updateTextBox}
+          onChange={this.genericFunction}
           >
           </textarea><br></br>
           <input 
@@ -87,9 +81,7 @@ function mapStateToProps(state){
 //action connect through props
 function matchDispatchToProps(dispatch){
   return bindActionCreators(
-      {genericAction:genericAction,
-        textBoxTyping:textBoxTyping,
-        sliderAction:sliderAction} , dispatch)
+      {genericAction:genericAction} , dispatch)
 }
 
 //state connect and action connect

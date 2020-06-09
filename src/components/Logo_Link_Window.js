@@ -3,7 +3,6 @@ import logo from '../logo.svg';
 import './Windows.css';
 
 import {genericAction} from '../actions/generic_actions.js'
-import {sliderAction} from '../actions/slider_action.js'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -14,21 +13,13 @@ class Logo_Link_Window extends Component{
       }
   }
   genericFunction = this.genericFunction.bind(this)
-  sliderFunctionOne = this.sliderFunctionOne.bind(this)
-  sliderFunctionTwo = this.sliderFunctionTwo.bind(this)
 
   genericFunction(event){
+    const {value,name} = event.target;
     event.preventDefault()
-    this.props.genericAction({genericButtonClick:"Clicked Button"})
+    this.props.genericAction({[name]:value})
   }
-  sliderFunctionOne(event){
-    //event.preventDefault()
-    this.props.sliderAction({sliderOne:event.target.value})
-  }
-  sliderFunctionTwo(event){
-    //event.preventDefault()
-    this.props.sliderAction({sliderTwo:event.target.value})
-  }
+
   render(){
   return (
     <div className="Logo_Link_Window">
@@ -52,8 +43,9 @@ class Logo_Link_Window extends Component{
       max="100" 
       value={this.props.template_reducer.sliderOne}
       className="sliderOne" 
+      name="sliderOne"
       id="myRange"
-      onChange={this.sliderFunctionOne}
+      onChange={this.genericFunction}
       ></input>
          <input 
       type="range"
@@ -61,8 +53,9 @@ class Logo_Link_Window extends Component{
       max="100" 
       value={this.props.template_reducer.sliderTwo}
       className="sliderTwo" 
+      name="sliderTwo"
       id="myRange"
-      onChange={this.sliderFunctionTwo}
+      onChange={this.genericFunction}
       ></input>
     </div>
   );}
@@ -78,8 +71,7 @@ function mapStateToProps(state){
 //action connect through props
 function matchDispatchToProps(dispatch){
   return bindActionCreators(
-      {genericAction:genericAction,
-        sliderAction : sliderAction} , dispatch)
+      {genericAction:genericAction} , dispatch)
 }
 
 //state connect and action connect
