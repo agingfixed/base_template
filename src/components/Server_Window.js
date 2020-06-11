@@ -120,10 +120,8 @@ class Server_Window extends Component{
             <div className = "APIReturnedText">
               API data will appear here</div>:
             <div className = "APIReturnedText">
-              High: ${this.props.template_reducer.APIResponse.coinbaseResponse.high.substring(0,6)}
-              <br></br>
-              Last: ${this.props.template_reducer.APIResponse.coinbaseResponse.last.substring(0,6)}
-              <br></br>
+              High: ${this.props.template_reducer.APIResponse.coinbaseResponse.high.substring(0,6)}&nbsp;&nbsp;
+              Last: ${this.props.template_reducer.APIResponse.coinbaseResponse.last.substring(0,6)}&nbsp;&nbsp;
               Low: ${this.props.template_reducer.APIResponse.coinbaseResponse.low.substring(0,6)}
             </div>}
           </div>

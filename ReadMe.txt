@@ -60,11 +60,11 @@ True	5. Set up Node.js server system
   True  	c. Asynchronous demonstrations with simple API call that sends
 		to front end visuals
 
-False	6. Set up file system 
+True	6. Set up file system 
 
-  False		a. Save to file from text box
+  True		a. Save to file from text box
 
-  False		b. Receive from file and display text box saved data
+  True		b. Receive from file and display text box saved data
 
 False	7. Set up login dependencies
 

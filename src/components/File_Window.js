@@ -16,6 +16,8 @@ class File_Window extends Component{
   genericFunction = this.genericFunction.bind(this)
   fileTextBoxClick = this.fileTextBoxClick.bind(this)
   fileShutterDrawer = this.fileShutterDrawer.bind(this)
+  saveTextBoxToServer = this.saveTextBoxToServer.bind(this)
+  loadTextBoxFromServer = this.loadTextBoxFromServer.bind(this)
 
   genericFunction(event){
     const {value,name} = event.target;
@@ -34,6 +36,46 @@ class File_Window extends Component{
   fileShutterDrawer(){
     return(<div className="File_Shutter" style={{height:(parseInt(this.props.template_reducer.sliderOne, 10)*3.33).toString(10)+"px"}}></div>)
   }
+  saveTextBoxToServer(event){
+    event.preventDefault()
+    let array = []
+    const value = this.props.template_reducer.fileSlot
+    let data = {textToServer:this.props.template_reducer.textAreaFile,
+    fileSlot:value}
+    data = JSON.stringify(data)
+    fetch(`api/textBoxFileSystemSave/`,
+        {
+            method: 'POST',
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        body:data})
+        .then(response=> response.json())
+        .then(response=> array = [{textAreaServerFileResponse:response.Data},{fileSlotSave:response.fileSlotSave}])
+        .then(()=> this.props.genericAction(array[0]))
+        .then(()=> this.props.genericAction(array[1]))
+    }
+    loadTextBoxFromServer(event){
+      event.preventDefault()
+      let array = []
+      const value = this.props.template_reducer.fileSlot
+      let data = {textToServer:this.props.template_reducer.textAreaFile,
+      fileSlot:value}
+      data = JSON.stringify(data)
+      fetch(`api/textBoxFileSystemLoad/`,
+          {
+              method: 'POST',
+              headers : { 
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+          body:data})
+          .then(response=> response.json())
+          .then(response=> array = [{textAreaServerFileResponse:response.Data},{fileSlot:response.fileSlot}])
+          .then(()=> this.props.genericAction(array[0]))
+          .then(()=> this.props.genericAction(array[1]))
+      }
   render(){
   return (
     <div className="File_Window">
@@ -53,18 +95,38 @@ class File_Window extends Component{
           onClick={this.fileTextBoxClick}
           onChange={this.genericFunction}
           >
-          </textarea><br></br>
-          <input 
+          </textarea>
+          <br></br>
+          <br></br>
+          Select file slot to save or load
+          <br></br>
+          <select 
+            type="submit" 
+            value={this.props.template_reducer.fileSlot}
+            onChange={this.genericFunction}
+            name="fileSlot"
+            className = "slotSelect"
+            >
+            <option value="0">-- Select file slot --</option>
+            <option value='1'> ------- slot 1 ------- </option>
+            <option value='2'> ------- slot 2 ------- </option>
+            <option value='3'> ------- slot 3 ------- </option>
+            <option value='4'> ------- slot 4 ------- </option>
+            <option value='5'> ------- slot 5 ------- </option>
+            </select>
+           <br></br>
+            <input 
           type="submit" 
-          value="Submit and Save Data to Server Files"
-          onClick={this.genericFunction}
-          ></input><br></br>
-          <input 
+          value="Save text to File slot"
+          onClick={this.saveTextBoxToServer}
+          ></input>
+           <input 
           type="submit" 
-          value="Load File Data from Server"
-          onClick={this.genericFunction}
-          ></input><br></br>
-          Received data will display here
+          value="Load text from File slot"
+          onClick={this.loadTextBoxFromServer}
+          ></input>
+            <br></br>
+          <pre>{this.props.template_reducer.textAreaServerFileResponse}</pre>
         </form>
         </div>
     </div>

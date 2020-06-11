@@ -18,6 +18,18 @@ app.post('/api/coinbasePrice',(req,res)=>{
     let coinbaseRequest = req.body
     console.log("Hello from the server!",coinbaseRequest)
     //'BTC-USD' or 'ETH-USD' or 'EOS-USD'
+    if(coinbaseRequest.tokenSelected===""){
+      coinbaseRequest.data = {}
+      coinbaseRequest.tokenSelected = ""
+      coinbaseRequest.data.high = "0"
+      coinbaseRequest.data.last = "0"
+      coinbaseRequest.data.low = "0"
+      res.send(JSON.stringify({
+        Note:`this is a test of server`,
+        Data:coinbaseRequest
+      }))
+      return
+    }
     publicClient
     .getProduct24HrStats(coinbaseRequest.tokenSelected)
     .then(data => {coinbaseRequest.data = data})
@@ -42,6 +54,41 @@ textFromFront = `Server sees your text:
   res.send(JSON.stringify({Note:`this is a test of server`,
         Data:textFromFront}));
     return;
+})
+app.post('/api/textBoxFileSystemSave',(req,res)=>{
+  let textFromFront = req.body.textToServer
+  let slotFromFront = parseInt(req.body.fileSlot,10)
+  let textInFile = {
+    textEntrys:["Empty","Empty","Empty","Empty","Empty","Empty"]
+  }
+  if (fs.existsSync(`./server/files/savedtext.txt`,`utf8`) === false){
+    fs.writeFileSync(`./server/files/savedtext.txt`,JSON.stringify(textInFile))
+  }
+  let arrayInFile = JSON.parse(fs.readFileSync(`./server/files/savedtext.txt`,`utf8`)).textEntrys
+  arrayInFile[slotFromFront] = textFromFront
+  textInFile = {textEntrys:arrayInFile}
+  fs.writeFileSync(`./server/files/savedtext.txt`,JSON.stringify(textInFile))
+  textFromFront = `File Saved to slot ${slotFromFront}`
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({fileSlot:req.body.fileSlot,
+  Data:textFromFront}));
+      return
+})
+app.post('/api/textBoxFileSystemLoad',(req,res)=>{
+  let textFromFront = req.body.textToServer
+  let slotFromFront = parseInt(req.body.fileSlot,10)
+  let textInFile = {
+    textEntrys:["Empty","Empty","Empty","Empty","Empty","Empty"]
+  }
+  if (fs.existsSync(`./server/files/savedtext.txt`,`utf8`) === false){
+    fs.writeFileSync(`./server/files/savedtext.txt`,JSON.stringify(textInFile))
+  }
+  let arrayInFile = JSON.parse(fs.readFileSync(`./server/files/savedtext.txt`,`utf8`)).textEntrys
+  textFromFront = arrayInFile[slotFromFront]
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({fileSlot:req.body.fileSlot,
+  Data:textFromFront}));
+      return
 })
 
 app.get('/api/customers', (req, res) => {

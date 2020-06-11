@@ -5,6 +5,8 @@ const templateData = {
     sliderTwo:"0",
     APIButtonStatus:"",
     textAreaServerResponse:"Processed server data will display here",
+    textAreaServerFileResponse:"Pulled file data will display here",
+    fileSlot:"0",
     coinbaseResponse:"API info will display here",
     APIResponse:{tokenSelected:"",coinbaseResponse:{high:"",low:"",last:""}}
 }
