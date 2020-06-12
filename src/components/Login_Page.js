@@ -4,23 +4,29 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import './Login_Page.css';
 
-import {genericAction} from '../actions/generic_actions.js'
+import {genericAction} from '../actions/generic_actions.js';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import auth from '../auth.js';
+
+
 
 class ValidatedLoginForm extends Component{
   constructor(){
       super()
       this.state={
-
       }
   }
+
   genericFunction = this.genericFunction.bind(this)
 
+
   genericFunction(event){
+    const {value,name} = event.target;
     event.preventDefault()
-    this.props.genericAction({genericButtonClick:"Clicked Button"})
+    this.props.genericAction({[name]:value})
   }
+
   render(){
   return (
     <Formik
@@ -37,26 +43,6 @@ class ValidatedLoginForm extends Component{
               .min(8, "Password is too short - should be 8 chars minimum.")
               .matches(/(?=.*[0-9])/, "Password must contain a number.")
           })}
-        /*
-        validate={values => {
-            let errors = {};
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (!EmailValidator.validate(values.email)) {
-              errors.email = "Invalid email address";
-            }
-      
-            const passwordRegex = /(?=.*[0-9])/;
-            if (!values.password) {
-              errors.password = "Required";
-            } else if (values.password.length < 8) {
-              errors.password = "Password must be 8 characters long.";
-            } else if (!passwordRegex.test(values.password)) {
-              errors.password = "Invalida password. Must contain one number";
-            }
-            return errors;
-          }}
-          */
     >
         {props => {
             const {
@@ -69,9 +55,10 @@ class ValidatedLoginForm extends Component{
                 handleSubmit}
              = props;
              return (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email login: myresume@mail.com</label>
+        <form id="LandingPageForm" onSubmit={handleSubmit}>
+          <label id="LandingPageLabel" htmlFor="email">Email login: myresume@mail.com</label>
           <input 
+            id="LandingPageInputE"
             name="email" 
             type="text" 
             placeholder="Enter your email"
@@ -84,8 +71,9 @@ class ValidatedLoginForm extends Component{
         <div className="input-feedback">{errors.email}</div>
             )}
 
-          <label htmlFor="email">Password : SecureLogin123</label>
+          <label id="LandingPageLabel" htmlFor="email">Password : SecureLogin123</label>
           <input
+            id="LandingPageInputP"
             name="password"
             type="password"
             placeholder="Enter your password"
@@ -97,15 +85,31 @@ class ValidatedLoginForm extends Component{
           {errors.password && touched.password && (
             <div className="input-feedback">{errors.password}</div>
             )}
-          <button type="submit" disabled = {isSubmitting}>
+          <button 
+            onClick = {()=>{
+              auth.login(() => {
+                console.log(this.props)
+                this.props.history.push("/genericApp")
+              })
+            }
+          }
+            id="LandingPageButton1" 
+            type="submit" 
+            disabled = {isSubmitting}>
             Login
+          </button>
+          <button 
+            id="LandingPageButton2" 
+            type="submit" 
+            disabled = {isSubmitting}>
+            New User
           </button>
         </form>
              );
         }}
     </Formik>
-    );}
-      }
+    )}}
+      
 
 
 //as stated

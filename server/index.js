@@ -65,7 +65,7 @@ app.post('/api/textBoxFileSystemSave',(req,res)=>{
     fs.writeFileSync(`./server/files/savedtext.txt`,JSON.stringify(textInFile))
   }
   let arrayInFile = JSON.parse(fs.readFileSync(`./server/files/savedtext.txt`,`utf8`)).textEntrys
-  arrayInFile[slotFromFront] = textFromFront
+  arrayInFile[slotFromFront] = textFromFront.substring(0,500)
   textInFile = {textEntrys:arrayInFile}
   fs.writeFileSync(`./server/files/savedtext.txt`,JSON.stringify(textInFile))
   textFromFront = `File Saved to slot ${slotFromFront}`

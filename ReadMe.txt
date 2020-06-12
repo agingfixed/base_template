@@ -77,9 +77,9 @@ False	7. Set up login dependencies
 		
   False		b. Password login
 
-  False		c. multipage capabilities connected to existing account login
+  True		c. multipage capabilities connected to existing account login
 
-  False		d. Specific user data (secrete unless login)
+  False		d. Specific user data (secrete unless login) that is saved to file
 
 		
 
@@ -303,6 +303,22 @@ incoming request stream and exposes it on req.body.
 
 
 (6.) -- Set up file system (6.)
+
+	a. First set up router system (download react router dom)
+	https://www.npmjs.com/package/react-router-dom
+	npm install --save react-router-dom
+
+	b. Had significant css problems when trying to import new pages as components
+	solved it by using putting an id on all elements in the new page and className
+	was taken so that is why I used id
+
+	c. Router finished (was easy except for css stuff)
+
+	d. Now for authenticating routs
+		shit got hard, mistakes where made
+		video that helped: https://www.youtube.com/watch?v=Y0-qdp-XBJg&list=PL
+		gSnLuf9KjW7_mTH9S4k6GFkxAg15YIFd&index=5&t=0s
+
 
 
 

@@ -15,15 +15,17 @@ class Login_Window extends Component{
   genericFunction = this.genericFunction.bind(this)
 
   genericFunction(event){
+    const {value,name} = event.target;
     event.preventDefault()
-    this.props.genericAction({genericButtonClick:"Clicked Button"})
+    this.props.genericAction({[name]:value})
   }
   render(){
   return (
     <div className="Login_Window">
       <header className="App-header">
         <p>
-          Unique Login User Data:
+          Private User Data
+          Account settings
         </p>
       </header>
     </div>

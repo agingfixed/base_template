@@ -3,23 +3,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Entire_App from './components/Entire_App';
-//import ValidatedLoginForm from './components/Login_Page';
 import {Provider} from 'react-redux';
 import {applyMiddleware,createStore} from 'redux';
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import allReducers from './reducers/reducers_combine.js'
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import ValidatedLoginForm from './components/Login_Page';
 
 const middleware = applyMiddleware(thunk,logger)
 const store = createStore(allReducers,middleware);
 
 ReactDOM.render(
-  <Provider store = {store}>
-    <React.StrictMode>
-      <Entire_App/>
-    </React.StrictMode>
-  </Provider>,
+    <Provider store = {store}>
+      <React.StrictMode>
+        <BrowserRouter >
+          <Switch>
+              <Route 
+              exact path="/" 
+              component={ValidatedLoginForm}
+              />
+              <Route 
+              exact path="/genericApp" 
+              component={Entire_App}
+              />
+          </Switch>
+        </BrowserRouter>
+      </React.StrictMode>
+    </Provider>,
   
   document.getElementById('root')
 );
@@ -32,6 +44,6 @@ serviceWorker.unregister();
 /*<Entire_App/>*/ //when i do multipule pages this will be what
 //login goest to
 
-//<ValidatedLoginForm/> //when server is setup this will be login to
+//<LandingPage/> //when server is setup this will be login to
 //entire app (css will have to be improved conflicts exist might have
 //to do router or seperate web page when ready)

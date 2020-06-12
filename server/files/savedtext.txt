@@ -1,1 +1,1 @@
-{"textEntrys":["Empty","Empty","Type in Data that will saved to server files...","cheese sticks","Who let the dogs out","Empty"]}
+{"textEntrys":["Type in Data that will saved to server files...","Empty","A long time ago in a galaxy far away....cats...they control the universe with there cosmic wisdom forever chasing the mouse that is to destroy the universe. ","cheese sticks","Who let the dogs out","Love is all you need"]}

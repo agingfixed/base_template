@@ -126,7 +126,7 @@ class File_Window extends Component{
           onClick={this.loadTextBoxFromServer}
           ></input>
             <br></br>
-          <pre>{this.props.template_reducer.textAreaServerFileResponse}</pre>
+          {this.props.template_reducer.textAreaServerFileResponse}
         </form>
         </div>
     </div>
