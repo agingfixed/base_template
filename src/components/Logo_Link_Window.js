@@ -30,11 +30,11 @@ class Logo_Link_Window extends Component{
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/agingfixed/base_template"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Link to React Framework
+          Link to Template Repository
         </a>
       </header>
       <input 
