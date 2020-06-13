@@ -14,6 +14,35 @@ const publicClient = new CoinbasePro.PublicClient();
 
 //pino logger req.log.info('First log to consol')
 
+app.post('/api/authenticateUser',(req,res)=>{
+  //user login + user sensitive data will be stored together and sent 
+  //to the front when login occures
+  let userLogin = req.body.loginValues
+  let userData= {
+    userArray:[{email:"",password:"",specificUserDataArray:[""]}]
+  }
+  if (fs.existsSync(`./server/files/userDataFile.txt`,`utf8`) === false){
+    fs.writeFileSync(`./server/files/userDataFile.txt`,JSON.stringify(userData))
+  }
+  let userDataArray = JSON.parse(fs.readFileSync(`./server/files/userDataFile.txt`,`utf8`)).userArray
+  let validUser = false
+  for (let x = 1; x < userDataArray.length;x++){
+    if(userDataArray[x].email === userLogin.email && userDataArray[x].password === userLogin.password){
+      validUser = true
+      res.setHeader('Content-Type', 'application/json');
+      res.send(JSON.stringify({
+        validUser:validUser,
+        userData:userDataArray[x]}));
+      return
+    }
+  }
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({
+    validUser:validUser,
+    userData:""}));
+  return
+})
+
 app.post('/api/coinbasePrice',(req,res)=>{
     let coinbaseRequest = req.body
     console.log("Hello from the server!",coinbaseRequest)

@@ -19,12 +19,62 @@ class ValidatedLoginForm extends Component{
   }
 
   genericFunction = this.genericFunction.bind(this)
+  genericFunction2 = this.genericFunction2.bind(this)
+  authenticatedUserCheck = this.authenticatedUserCheck.bind(this)
+  loginFunction = this.loginFunction.bind(this)
+  informUserOfInvalidUser = this.informUserOfInvalidUser.bind(this)
+  resetInformUser = this.resetInformUser.bind(this)
 
+  
 
   genericFunction(event){
     const {value,name} = event.target;
     event.preventDefault()
     this.props.genericAction({[name]:value})
+  }
+  genericFunction2(value){
+    this.props.genericAction({informUserOfInvalidLogin:value})
+  }
+  loginFunction(setSubmitting,array){
+    auth.login(() => {
+      this.props.genericAction({userData:array[1].userData})
+      setSubmitting(false)
+      this.props.history.push("/genericApp")
+    })
+  }
+  informUserOfInvalidUser(setSubmitting){
+    this.genericFunction2({informUserOfInvalidLogin:true})
+    setSubmitting(false)
+  }
+  
+  authenticatedUserCheck(values,setSubmitting){
+    let mounted = true;
+    let data={loginValues:values}
+    data = JSON.stringify(data)
+    fetch(`api/authenticateUser/`,
+        {
+            method: 'POST',
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        body:data})
+        .then(response=> response.json())
+        .then(response=> [{validUser:response.validUser},{userData:response.userData}])
+        .then(array => {
+          if(mounted){
+            array[0].validUser?this.loginFunction(setSubmitting,array):this.informUserOfInvalidUser(setSubmitting)
+          }else{
+            //this.props.resetAction()
+          }
+          return () => mounted = false;
+        })
+        //.then(array=> array[0].validUser?<div className="input-feedback">{"User not found"}</div>:"")
+        //.then(()=> this.props.genericAction(array[1]))
+  }
+
+  resetInformUser(){
+    this.genericFunction2(false)
   }
 
   render(){
@@ -33,6 +83,10 @@ class ValidatedLoginForm extends Component{
         initialValues = {{email: "",password: ""}}
         onSubmit = {(values,{setSubmitting}) => {
             console.log(`Submitting ${values.email} & ${values.password}`)
+            //this is where code goes for button click
+            this.authenticatedUserCheck(values,setSubmitting)
+            /**/
+
         }}
         validationSchema={Yup.object().shape({
             email: Yup.string()
@@ -56,7 +110,7 @@ class ValidatedLoginForm extends Component{
              = props;
              return (
         <form id="LandingPageForm" onSubmit={handleSubmit}>
-          <label id="LandingPageLabel" htmlFor="email">Email login: myresume@mail.com</label>
+          <label id="LandingPageLabel" htmlFor="email">Email login: </label>
           <input 
             id="LandingPageInputE"
             name="email" 
@@ -64,6 +118,7 @@ class ValidatedLoginForm extends Component{
             placeholder="Enter your email"
             value = {values.email}
             onChange = {handleChange}
+            onInput = {this.resetInformUser}
             onBlur = {handleBlur}
             className={errors.email && touched.email && "error"}
          />
@@ -71,7 +126,7 @@ class ValidatedLoginForm extends Component{
         <div className="input-feedback">{errors.email}</div>
             )}
 
-          <label id="LandingPageLabel" htmlFor="email">Password : SecureLogin123</label>
+          <label id="LandingPageLabel" htmlFor="email">Password : </label>
           <input
             id="LandingPageInputP"
             name="password"
@@ -79,31 +134,31 @@ class ValidatedLoginForm extends Component{
             placeholder="Enter your password"
             value = {values.password}
             onChange = {handleChange}
+            onInput = {this.resetInformUser}
             onBlur = {handleBlur}
             className={errors.password && touched.password && "error"}
           />
           {errors.password && touched.password && (
             <div className="input-feedback">{errors.password}</div>
             )}
+            {this.props.template_reducer.informUserOfInvalidLogin?<div className="input-feedback">Incorrect User or Password</div>:""}
           <button 
-            onClick = {()=>{
-              auth.login(() => {
-                console.log(this.props)
-                this.props.history.push("/genericApp")
-              })
-            }
-          }
+            value={values}
             id="LandingPageButton1" 
             type="submit" 
-            disabled = {isSubmitting}>
+            disabled = {isSubmitting}
+          >
             Login
           </button>
           <button 
+            className = "LandingPageButton2"
             id="LandingPageButton2" 
-            type="submit" 
-            disabled = {isSubmitting}>
+            type="button" 
+            disabled = {isSubmitting}
+          >
             New User
           </button>
+          <div className="noNewUser">Contact site owner for new user access</div>
         </form>
              );
         }}

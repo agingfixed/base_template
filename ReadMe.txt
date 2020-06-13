@@ -66,20 +66,22 @@ True	6. Set up file system
 
   True		b. Receive from file and display text box saved data
 
-False	7. Set up login dependencies
+True	7. Set up login dependencies
 
-  False		a. User accounts file system
+  True		a. User accounts file system
+			(no new user account or modify process 
+			needed for now)
 			1. New user account process
 			2. Existing user account process
 			3. Modify user account process (if easy,
 			otherwise just make a skeleton of it for 
 			place holding)
 		
-  False		b. Password login
+  True		b. Password login
 
   True		c. multipage capabilities connected to existing account login
 
-  False		d. Specific user data (secrete unless login) that is saved to file
+  Not Needed	d. Specific user data (secrete unless login) that is saved to file
 
 		
 
@@ -318,6 +320,17 @@ incoming request stream and exposes it on req.body.
 		shit got hard, mistakes where made
 		video that helped: https://www.youtube.com/watch?v=Y0-qdp-XBJg&list=PL
 		gSnLuf9KjW7_mTH9S4k6GFkxAg15YIFd&index=5&t=0s
+
+	e. More poblems persisted with history prop not passing through embedded
+	components
+		The solution was to pass down props through html react syntax. 
+		<Item props = {props}/> was the method for passing them down
+
+	f. Do not update state after transition to another page! It is considered
+	a memory leak if you update state of a component that is not currently
+	mounted
+
+	g.
 
 
 

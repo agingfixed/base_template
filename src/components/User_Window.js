@@ -4,8 +4,9 @@ import './Windows.css';
 import {genericAction} from '../actions/generic_actions.js'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import auth from '../auth.js';
 
-class Login_Window extends Component{
+class User_Window extends Component{
   constructor(){
       super()
       this.state={
@@ -19,8 +20,11 @@ class Login_Window extends Component{
     event.preventDefault()
     this.props.genericAction({[name]:value})
   }
+
+
   render(){
   return (
+    
     <div className="Login_Window">
       <header className="App-header">
         <p>
@@ -28,6 +32,27 @@ class Login_Window extends Component{
           Account settings
         </p>
       </header>
+      <button 
+        id="UserWindowLogoutButton" 
+        type="submit" 
+        onClick = {()=>{
+          auth.logout(() => {
+            this.props.props.history.push("/")
+          })
+        }
+      }
+        >
+        Logout
+      </button>
+      <button 
+        id="UserWindowUserSettings" 
+        type="submit" 
+        >
+        Account Settings
+      </button>
+      <div className="noUserSettings">This feture is not available at this time</div>
+      
+  
     </div>
   );}
 }
@@ -46,4 +71,4 @@ function matchDispatchToProps(dispatch){
 }
 
 //state connect and action connect
-export default connect(mapStateToProps, matchDispatchToProps)(Login_Window);
+export default connect(mapStateToProps, matchDispatchToProps)(User_Window);

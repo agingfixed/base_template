@@ -14,7 +14,7 @@ h1 {
 #LandingPageForm {
   position:absolute;
   top:33%;
-  left:25%;
+  left:30%;
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -82,6 +82,8 @@ h1 {
   color: rgb(70, 153, 179);
 }
 #LandingPageButton2 {
+  position:relative;
+  left:30px;
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
   color: white;
@@ -93,4 +95,17 @@ h1 {
   cursor: pointer;
   background-color: white;
   color: rgb(70, 153, 179);
+}
+.noNewUser{
+  color: rgb(235, 54, 54);
+  position:relative;
+  left:200px;
+  top:-12px;
+  margin-top: -15px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: none;
+}
+.LandingPageButton2:hover + .noNewUser{
+  display: block;
 }

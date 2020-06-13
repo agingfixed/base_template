@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Entire_App from './components/Entire_App';
+import {Entire_App} from './components/Entire_App';
 import {Provider} from 'react-redux';
 import {applyMiddleware,createStore} from 'redux';
 import logger from "redux-logger";
@@ -11,6 +11,7 @@ import allReducers from './reducers/reducers_combine.js'
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ValidatedLoginForm from './components/Login_Page';
+import {ProtectedRoute} from './protected_route.js';
 
 const middleware = applyMiddleware(thunk,logger)
 const store = createStore(allReducers,middleware);
@@ -24,9 +25,12 @@ ReactDOM.render(
               exact path="/" 
               component={ValidatedLoginForm}
               />
-              <Route 
+              <ProtectedRoute 
               exact path="/genericApp" 
               component={Entire_App}
+              />
+              <Route
+              path = "*" component = {()=> "404 Not Found"}
               />
           </Switch>
         </BrowserRouter>
