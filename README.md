@@ -34,7 +34,10 @@ This will also start express server which will be at (http://localhost:3001)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2eddb736512d1eebf7053c018b45fd3a30635aed
 ### `npm start`
 
 Runs the app in the development mode.<br />
