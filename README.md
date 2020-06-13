@@ -1,3 +1,38 @@
+This project is a working template for quickly building new personal
+projects. It has all the basic capabilites that a completed project 
+will have:
+
+1. secure login with secure user data stored on express server file
+    system
+2. communications with express server, saving, reading, and computation
+    capabilites ready to be built and deployed
+3. basic front end layouts and graphics for gettings started in layout
+4. state managmnet with react-redux
+5. react router for multipage capabilites
+
+Future work needed, but may be too specific for this template: 
+
+1. payment validation system for user login
+2. new user process and user settings controls
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the development mode.<br>
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+This will also start express server which will be at (http://localhost:3001)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
