@@ -334,7 +334,17 @@ Starting from scratch:
 
 1. mkdir <foldername>
 2. cd <foldername>
-3. 
+3. git clone https://github.com/agingfixed/base_template.git
+4. cd base_template
+5. npm install all
+6. npm audit fix
+7. npm run dev 
+	Starting the development server... (never starts properly) 
+8. npm install express --save
+9. npm audit fix
+	Starting the development server...
+	Took some time but it worked!!!!!!!!
+	
 
 
 
