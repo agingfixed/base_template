@@ -330,7 +330,11 @@ incoming request stream and exposes it on req.body.
 	a memory leak if you update state of a component that is not currently
 	mounted
 
-	g.
+Starting from scratch: 
+
+1. mkdir <foldername>
+2. cd <foldername>
+3. 
 
 
 
