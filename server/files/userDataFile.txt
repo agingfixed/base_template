@@ -1,1 +1,1 @@
-{"userArray":[{"email":"","password":"","specificUserDataArray":[""]},{"email":"michaelnmcclain@gmail.com","password":"testpassword1","specificUserDataArray":[""]}]}
+{"userArray":[{"email":"","password":"","specificUserDataArray":[""]},{"email":"michaelnmcclain@gmail.com","password":"test","specificUserDataArray":[""]}]}
